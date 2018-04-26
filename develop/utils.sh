@@ -27,7 +27,7 @@ waituntil (){
     done
 }
 
-#2.自定义ensure函数
+#2.自定义ensure函数, reset脚本调用
 ensure () {
   local msg="$1"
   shift
