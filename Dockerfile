@@ -49,7 +49,8 @@ FROM nicholas86/dj_web_1:1
 ADD requirements.txt /workspace/
 RUN pip3 install -r /workspace/requirements.txt
 ADD . /workspace/
-#RUN mkdir /workspace/management/logs/
+RUN mkdir /uwsgi_conf
+COPY ./develop/uwsgi_params  /uwsgi_conf/uwsgi_params
 
 WORKDIR /workspace
 

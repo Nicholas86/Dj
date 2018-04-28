@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-    db:
+    db: #Mysql数据库服务
         image: mysql
         restart: always
         environment:
@@ -16,14 +16,32 @@ services:
          - "3306:3306"
         command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 #        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+    nginx: #Nginx部署服务
+        image: nginx
+        ports: #同时监听两个端口
+          - "80:80"
+#          - "443:443"
+        volumes: #将本项目nginx配置文件dj_nginx.conf 挂载到容器里面的/etc/nginx/conf.d路径下
+          - ./config:/etc/nginx
+          - uwsgi_volumes:/uwsgi_conf #uwsgi_conf配置文件路径, 需要在Dockerfile文件创建
+        depends_on:
+          - web
+
     web:
         build: .
-        command: python3 manage.py runserver 0.0.0.0:8000
-        volumes:
-          - .:/code
+        restart: always
+#        command: python3 manage.py runserver 0.0.0.0:8000
+        command: uwsgi --ini dj_uwsgi.ini
+        volumes: # .:点代表当前目录, 挂载到虚拟机容器里面的/workspace目录下
+          - .:/workspace
+          - uwsgi_volumes:/uwsgi_conf #uwsgi_conf配置文件路径
         ports:
           - "8000:8000"
         links:
           - db
         depends_on: #web容器依赖数据库容器db
           - db
+
+volumes:
+  uwsgi_volumes: {}
