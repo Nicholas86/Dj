@@ -21,7 +21,6 @@ services:
         image: nginx
         ports: #同时监听两个端口
           - "80:80"
-#          - "443:443"
         volumes: #将本项目nginx配置文件dj_nginx.conf 挂载到容器里面的/etc/nginx/conf.d路径下
           - ./config:/etc/nginx
           - uwsgi_volumes:/uwsgi_conf #uwsgi_conf配置文件路径, 需要在Dockerfile文件创建
@@ -31,7 +30,7 @@ services:
     web:
         build: .
         restart: always
-#        command: python3 manage.py runserver 0.0.0.0:8000
+        #command: python3 manage.py runserver 0.0.0.0:8000
         command: uwsgi --ini dj_uwsgi.ini
         volumes: # .:点代表当前目录, 挂载到虚拟机容器里面的/workspace目录下
           - .:/workspace
