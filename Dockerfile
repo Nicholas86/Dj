@@ -1,7 +1,7 @@
 
 ############################# 官网提供的 #######################
-FROM python:3
-ENV PYTHONUNBUFFERED 1
+#FROM python:3
+#ENV PYTHONUNBUFFERED 1
 #RUN mkdir /code
 #WORKDIR /code
 #ADD requirements.txt /code/
@@ -11,7 +11,7 @@ ENV PYTHONUNBUFFERED 1
 
 
 ############################# JTSERVER 项目里的 #######################
-#FROM registry.cn-shanghai.aliyuncs.com/jitu/jtserver:7
+FROM nicholas86/dj_web_1:1
 
 # FROM registry.cn-beijing.aliyuncs.com/io84/ubuntu_16_04
 # MAINTAINER kevin@sinalifo.com
