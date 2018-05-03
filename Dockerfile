@@ -11,7 +11,7 @@
 
 
 ############################# JTSERVER 项目里的 #######################
-FROM nicholas86/dj_web_1:1
+FROM nicholas86/dj_web_1:2
 
 # FROM registry.cn-beijing.aliyuncs.com/io84/ubuntu_16_04
 # MAINTAINER kevin@sinalifo.com
@@ -49,7 +49,8 @@ FROM nicholas86/dj_web_1:1
 ADD requirements.txt /workspace/
 RUN pip3 install -r /workspace/requirements.txt
 ADD . /workspace/
-RUN mkdir /uwsgi_conf
+#RUN mkdir /uwsgi_conf
+RUN /bin/sh -c /bin/sh -c mkdir /uwsgi_conf
 COPY ./develop/uwsgi_params  /uwsgi_conf/uwsgi_params
 
 WORKDIR /workspace
