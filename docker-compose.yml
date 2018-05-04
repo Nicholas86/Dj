@@ -24,6 +24,7 @@ services:
         volumes: #将本项目nginx配置文件dj_nginx.conf 挂载到容器里面的/etc/nginx/conf.d路径下
           - ./config:/etc/nginx
           - uwsgi_volumes:/uwsgi_conf #uwsgi_conf配置文件路径, 需要在Dockerfile文件创建
+          - static_volumes:/workspace/static
         depends_on:
           - web
 
@@ -35,6 +36,7 @@ services:
         volumes: # .:点代表当前目录, 挂载到虚拟机容器里面的/workspace目录下
           - .:/workspace
           - uwsgi_volumes:/uwsgi_conf #uwsgi_conf配置文件路径
+          - static_volumes:/workspace/static #收集并保存静态文件到static文件里面, 然后复制一份到static_volumes里面, 供nginx服务调用
         ports:
           - "8000:8000"
         links:
@@ -42,5 +44,8 @@ services:
         depends_on: #web容器依赖数据库容器db
           - db
 
+#volumes:解决容器间通信问题。
+#相当于一个u盘, 当web服务启动后, 将
 volumes:
   uwsgi_volumes: {}
+  static_volumes: {}
