@@ -11,7 +11,7 @@
 
 
 ############################# JTSERVER 项目里的 #######################
-FROM nicholas86/dj_web_1:2
+FROM nicholas86/dj_web_1:3
 
 # FROM registry.cn-beijing.aliyuncs.com/io84/ubuntu_16_04
 # MAINTAINER kevin@sinalifo.com
