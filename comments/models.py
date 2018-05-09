@@ -16,7 +16,7 @@ class Ownable(models.Model):
     """
 
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,
-                              null=True, verbose_name="所有者", related_name="%(class)ss")
+                              null=True, verbose_name="用户", related_name="%(class)ss")
 
     class Meta:
         #允许继承
@@ -55,26 +55,3 @@ class Comment(Ownable, MPTTModel):
         if self.parent is not None:
             return '{} 回复 {}'.format(self.owner.username, self.parent.owner.username)
         return '{} 评论 实体 {}'.format(self.owner.username, self.parent.owner.username)
-
-
-LIKE_TYPE = (
-    (-1, '踩'),
-    (0, '无'),
-    (1, '顶'),
-)
-
-class Like(Ownable, models.Model):
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
-    like_object = GenericForeignKey('content_type', 'object_id')
-    create_date = models.DateTimeField(auto_now_add=True, verbose_name='创建日期')
-    status = models.SmallIntegerField(default=True)
-
-    class Meta:
-        verbose_name = '点赞'
-        verbose_name_plural = verbose_name
-
-    def __str__(self):
-        if self.status:
-            return '%s 赞了 %s的评论' % (self.owner.username, self.like_object)
-        return '%s 踩了 %s的评论' % (self.owner.username, self.like_object)
