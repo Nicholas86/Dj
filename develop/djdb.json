@@ -301,7 +301,7 @@
     "pk": 1,
     "fields": {
         "title": "\u7b2c\u4e00\u7bc7\u535a\u5ba2",
-        "description": "\u8fd9\u662f\u7b2c\u4e00\u7bc7\u535a\u5ba2\uff0c \u8bf4\u4e9b\u4ec0\u4e48\u5462",
+        "content": "\u8fd9\u662f\u7b2c\u4e00\u7bc7\u535a\u5ba2\uff0c \u8bf4\u4e9b\u4ec0\u4e48\u5462",
         "is_published": true,
         "is_comments_enabled": true,
         "like_numbers": 0,

@@ -107,6 +107,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# elasticsearch index_name
+ELASTICSEARCH_INDEX_NAME = os.environ.get('ELASTICSEARCH_INDEX_NAME', 'dj')
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -129,3 +133,24 @@ STATIC_URL = '/static/'
 # 执行collectstatic命令后会将项目中的静态文件收集到该目录下面来（所以不应该在该目录下面放置自己的一些静态文件，因为会覆盖掉）
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
+"""
+ES_HOST = os.environ.get('ES_HOST', 'localhost')
+
+ES_INDEX = os.environ.get('ES_INDEX', 'stack')
+ES_INDEX_SETTINGS = {
+    'number_of_shards': 1,
+    'number_of_replicas': 0,
+}
+
+ES_CONNECTIONS = {
+    'default': {
+        'hosts': [{
+            'host': ES_HOST,
+            'http_auth': ES_AUTH,
+            'verify_certs': False,
+            'use_ssl': os.environ.get('ES_USE_SSL', False) == 'True',
+            'port': os.environ.get('ES_PORT', '9200'),
+        }]
+    }
+}
+"""

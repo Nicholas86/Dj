@@ -44,6 +44,14 @@ services:
         depends_on: #web容器依赖数据库容器db
           - db
 
+        environment: #环境变量
+          DJANGO_SETTINGS_MODULE: Dj.settings
+          PYTHONUNBUFFERED: 1
+          ELASTICSEARCH_INDEX_NAME: "dj"
+
+
+
+
 #volumes:解决容器间通信问题。
 #相当于一个u盘, 当web服务启动后, 将
 volumes:

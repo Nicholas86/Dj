@@ -24,3 +24,4 @@ django-import-export==0.6.1
 django-controlcenter==0.2.5
 django-jsonfield==1.0.1
 django-jsonfield-compat==0.4.4
+elasticsearch-dsl>=6.0.0,<7.0.0

@@ -20,7 +20,7 @@ admin.site.register(Tag, TagAdmin)
 
 
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'description', 'create_date')
+    list_display = ('id', 'title', 'content', 'create_date')
     list_filter = ('title', )
     ordering = ('id', )
 
