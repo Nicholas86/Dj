@@ -1,0 +1,14 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} 博客 {% endblock %}</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600,800' rel='stylesheet' type='text/css'>
+{#    <link rel="stylesheet" href="{% static "base.css" %}">#}
+</head>
+<body>
+  <h1><a href="{% url "qa-list" %}">coffee.stackexchange.org</a></h1>
+  {% block body %} {% endblock %}
+</body>
+</html>
