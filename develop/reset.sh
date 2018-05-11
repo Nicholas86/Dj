@@ -14,6 +14,9 @@ ensure "killing existing services" docker-compose kill
 ensure "removing existing services" docker-compose rm -fv
 ensure "removing existing services" docker-compose rm -fv
 
+#4.1清空elasticsearch索引、文档
+ensure "removing existing elasticsearch index-doc" curl -XDELETE http://127.0.0.1:9200/_all
+
 #5.判断是否包含BUILD参数, BUILD=Y ./develop/reset.sh 参数名BUILD, 值Y
 if [ -n "${BUILD}" ]
 then

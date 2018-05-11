@@ -69,13 +69,13 @@ class Blog(models.Model):
             char_num=self.char_num,
             is_comments_enabled=self.is_comments_enabled,
             like_numbers=self.like_numbers,
-            # category=self.category.name,
+            category=self.category.name,
             tags=",".join([tag.name for tag in self.tag.all()]),
             suggestions={"input": [tag.name for tag in self.tag.all()]},
             create_date=self.create_date
         )
         obj.save()
-        print("创建索引成功了, {}".format(obj.to_dict(include_meta=True)))
+        print("创建索引成功, {}".format(obj.to_dict(include_meta=True)))
         return obj.to_dict(include_meta=True)
 
     def __str__(self):

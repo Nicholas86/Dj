@@ -14,7 +14,7 @@ class BlogIndexDoc(DocType):
     char_num = Integer()
     is_comments_enabled = Boolean()
     like_numbers = Integer()
-    # category = Text(analyzer='ik_max_word', search_analyzer="ik_max_word")
+    category = Text(analyzer='ik_max_word', search_analyzer="ik_max_word")
     tags = Text(analyzer='ik_max_word', search_analyzer="ik_max_word")
     create_date = Date()
     suggestions = Completion()

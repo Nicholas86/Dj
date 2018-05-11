@@ -10,4 +10,4 @@ from elasticsearch_dsl.connections import connections
 alias:标签,字符串
 hosts:服务器名称,数组
 """
-connection = connections.create_connection(hosts=['http://127.0.0.1:9200/', 'http://192.168.0.232:9200/'])
+connection = connections.create_connection(hosts=['http://192.168.0.232:9200/'])
