@@ -70,7 +70,7 @@ class Blog(models.Model):
             is_comments_enabled=self.is_comments_enabled,
             like_numbers=self.like_numbers,
             category=self.category.name,
-            tags=",".join([tag.name for tag in self.tag.all()]),
+            tags=self.display_tag_name(),
             suggestions={"input": [tag.name for tag in self.tag.all()]},
             create_date=self.create_date
         )
