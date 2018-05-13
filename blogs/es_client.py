@@ -12,5 +12,5 @@ hosts:服务器名称,数组。
 hosts:elasticsearch.yml文件必须配置192.168.40.15, 默认的127.0.0.1无法访问。
 原因:https://discuss.elastic.co/t/upgrade-elasticsearch-2-0-to-5-2-indexing-not-working/80241
 """
-connection = connections.create_connection(hosts=['http://192.168.40.15:9200/'])
+connection = connections.create_connection(hosts=["192.168.40.10", "192.168.99.1"])
 #'http://192.168.0.232:9200/'
