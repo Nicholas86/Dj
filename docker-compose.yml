@@ -14,8 +14,8 @@ services:
           MYSQL_PORT: 3306  # cannot change this port to other number
         ports:
          - "3306:3306"
-        command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-#        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+#        command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
     nginx: #Nginx部署服务,www.dj.com 需要在 /etc/hosts 文件添加 192.168.99.100  www.dj.com
         image: nginx
