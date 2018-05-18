@@ -15,8 +15,7 @@ ensure "removing existing services" docker-compose rm -fv
 ensure "removing existing services" docker-compose rm -fv
 
 #4.1清空elasticsearch索引、文档
-ensure "starting elasticsearch" brew services restart elasticsearch
-sleep 10
+ensure "waiting elasticsearch to start" brew services restart elasticsearch sleep 10
 ensure "removing existing elasticsearch index-doc" curl -XDELETE http://192.168.99.1:9200/_all
 
 #5.判断是否包含BUILD参数, BUILD=Y ./develop/reset.sh 参数名BUILD, 值Y
